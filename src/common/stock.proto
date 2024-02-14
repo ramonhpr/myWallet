@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message Stock {
+  string symbol = 1;
+  int32 quantity = 2;
+  float price = 3;
+}
+
+service Portfolio {
+  // Adiciona uma nova ação ao portfólio
+  rpc AddStock (Stock) returns (Stock);
+
+  // Remove uma ação do portfólio
+  rpc RemoveStock (Stock) returns (Stock);
+
+  // Lista todas as ações no portfólio
+  rpc ListStock (google.protobuf.Empty) returns (stream Stock);
+}
